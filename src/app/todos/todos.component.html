@@ -1,0 +1,27 @@
+<input type="text" [(ngModel)]="nTitolo" >
+<button (click)="aggiungiTask()" >+</button>
+
+<div>
+      <ng-container *ngIf="tasks; else elseTemplate">
+
+      <div *ngIf="tasks.length > 0; else elseNoTask">
+        <div *ngFor="let task of tasks; let i = index"  >
+          <div>
+            - {{task.title}}
+            <button class="btn" (click)="completeTask(task,i)" >✅</button>
+          </div>
+
+        </div>
+
+      </div>
+      </ng-container>
+      <ng-template #elseTemplate>
+      <p>Recupero Tasks...</p>
+
+      </ng-template>
+      <ng-template #elseNoTask>
+        <p>Oops, non ci sono Task</p>
+      </ng-template>
+
+
+    </div>
